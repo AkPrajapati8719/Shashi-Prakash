@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashi Prakash | Civil Engineer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1",
+                        accent: "#22d3ee",
+                        dark: "#0f172a"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Favicon : SHASHI -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+  %3Crect width='100' height='100' rx='20' fill='%236366f1'/%3E
+  %3Ctext x='50%25' y='62%25' text-anchor='middle' font-size='40'
+  font-family='Arial, sans-serif' font-weight='700' fill='white'%3ES%3C/text%3E
+  %3C/svg%3E">
+
+
+    <!-- Custom Styles -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 25px rgba(99, 102, 241, .45);
+        }
+
+        /* Custom styles for elements */
+        /* Vertical timeline border */
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(to bottom,
+                    #6366f1,
+                    #22d3ee,
+                    transparent);
+            border-radius: 2px;
+        }
+    </style>
+
+    <!-- cursor animation -->
+    <style>
+        /* Keep default cursor visible */
+        body {
+            cursor: default;
+        }
+
+        /* Animated trailing cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.7);
+            /* semi-transparent primary */
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+        }
+
+        /* Enlarge on hover interactive elements */
+        .cursor.hover {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(236, 72, 153, 0.7);
+            /* accent color */
+        }
+    </style>
+
+    <!-- project css -->
+    <style>
+        .project-card {
+            background: #0f172a;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card img {
+            height: 300px;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Skill card styles */
+        .skill-card {
+            padding: 1.5rem;
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.35s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
+            border-color: rgba(99, 102, 241, 0.6);
+        }
+    </style>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+</head>
+
+<body class="bg-dark text-gray-200">
+
+    <!-- PAGE WRAPPER -->
+    <div class="min-h-screen flex justify-center px-3 sm:px-6 lg:px-10">
+
+        <!-- MAIN CONTAINER -->
+        <div class="w-full max-w-7xl
+              bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-800
+              rounded-3xl shadow-2xl shadow-black/40
+              overflow-hidden">
+
+            <!-- ================= NAVBAR ================= -->
+            <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur border-b border-white/10">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+                    <!-- Logo -->
+                    <h1 class="text-xl font-bold" data-aos="zoom-in" data-aos-duration="1000">
+                        <a href="#home" class="hover:text-primary transition">Shashi<span
+                                class="text-primary">Prakash</span></a>
+                    </h1>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex gap-8 text-sm items-center">
+                        <a href="#home" class="hover:text-primary transition">Home</a>
+                        <a href="#about" class="hover:text-primary transition">About</a>
+                        <a href="#education" class="hover:text-primary transition">Education</a>
+                        <a href="#experience" class="hover:text-primary transition">Experience</a>
+                        <a href="#skills" class="hover:text-primary transition">Skills</a>
+                        <a href="#projects" class="hover:text-primary transition">Projects</a>
+                        <a href="#contact" class="hover:text-primary transition">Contact</a>
+                    </div>
+
+                    <!-- Mobile Toggle Button -->
+                    <button id="menuToggle" class="md:hidden text-2xl focus:outline-none hover:text-primary transition">
+                        ☰
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="hidden md:hidden bg-dark border-t border-white/10 px-6 py-6 space-y-4">
+
+                    <a href="#home" class="block hover:text-primary transition">Home</a>
+                    <a href="#about" class="block hover:text-primary transition">About</a>
+                    <a href="#education" class="block hover:text-primary transition">Education</a>
+                    <a href="#experience" class="block hover:text-primary transition">Experience</a>
+                    <a href="#skills" class="block hover:text-primary transition">Skills</a>
+                    <a href="#projects" class="block hover:text-primary transition">Projects</a>
+                    <a href="#contact" class="block hover:text-primary transition">Contact</a>
+
+                    <!-- Mobile Download CV -->
+                    <a href="images/shashi prakash.pdf" download class="block text-center mt-4 px-4 py-2 rounded-lg
+             bg-primary text-white glow hover:scale-105 transition">
+                        Download CV
+                    </a>
+                </div>
+            </nav>
+
+            <!-- ================= HERO ================= -->
+            <section id="home" class="min-h-screen pt-28 flex items-center">
+                <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+                    <div>
+                        <p class="text-accent text-sm mb-2" data-aos="zoom-in" data-aos-delay="200">Professional Trainer
+                            & Designer</p>
+
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                            <span id="word1" class="text-white">Shashi</span>
+                            <span id="word2" class="text-primary">Prakash</span>
+                        </h1>
+
+                        <p class="mt-6 text-gray-400 max-w-xl">
+                            Dedicated Civil Design Engineer with over <strong>4+ years</strong> of experience in
+                            large-scale infrastructure, residential, and commercial projects. Passionate
+                            about sustainable engineering and professional training.
+                        </p>
+
+                        <div class="mt-8 flex gap-4 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+
+                            <!-- View Projects -->
+                            <a href="#projects" class="px-6 py-3 bg-primary rounded-lg glow hover:scale-105 transition">
+                                View Projects
+                            </a>
+
+                            <!-- Hire Me -->
+                            <a href="#contact"
+                                class="px-6 py-3 border border-white/20 rounded-lg hover:border-primary hover:scale-105 transition">
+                                Hire Me
+                            </a>
+
+                            <!-- Download CV -->
+                            <a href="images/shashi prakash.pdf" download class="px-6 py-3 border border-primary text-primary rounded-lg
+            hover:bg-primary hover:text-white hover:scale-105
+            transition glow flex items-center gap-2">
+
+                                <!-- Icon -->
+                                <span>⬇</span>
+                                Download CV
+                            </a>
+
+                        </div>
+
+
+                        <!-- COUNTERS -->
+                        <div class="mt-10 grid sm:grid-cols-3 gap-6">
+                            <div class="bg-slate-900 p-6 rounded-xl text-center glow hover:-translate-y-2 transition"
+                                data-aos="fade-right" data-aos-delay="100">
+                                <h3 class="text-4xl font-bold text-primary counter" data-target="4">0</h3>
+                                <p class="text-sm text-gray-400 mt-2">Years Experience</p>
+                            </div>
+
+                            <div class="bg-slate-900 p-6 rounded-xl text-center glow hover:-translate-y-2 transition"
+                                data-aos="fade-left" data-aos-delay="200">
+                                <h3 class="text-4xl font-bold text-primary counter" data-target="50">0</h3>
+                                <p class="text-sm text-gray-400 mt-2">Projects Completed</p>
+                            </div>
+
+                            <div class="bg-slate-900 p-6 rounded-xl text-center glow hover:-translate-y-2 transition"
+                                data-aos="fade-right" data-aos-delay="100">
+                                <h3 class="text-4xl font-bold text-primary">4.7</h3>
+                                <p class="text-sm text-gray-400 mt-2">Professional Rating</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="images/shashi_image__2.png" alt="Shashi Prakash"
+                            class="w-72 h-82 rounded-full object-cover border-4 border-white/10 glow hover:scale-105 transition">
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= ABOUT ================= -->
+            <section id="about" class="py-24 bg-slate-900/50">
+                <div class="max-w-6xl mx-auto px-6">
+
+                    <!-- ABOUT ME -->
+                    <div class="text-center mb-20" data-aos="fade-up" data-aos-delay="200">
+                        <h2 class="text-3xl font-bold mb-6" data-aos="flip-up" data-aos-delay="600">About Me</h2>
+                        <p class="text-gray-400 leading-relaxed max-w-4xl mx-auto">
+                            Dedicated <strong class="text-primary">Civil Design Engineer & Trainer</strong> with over
+                            <strong>4+ years</strong> of extensive experience in managing and executing
+                            large-scale infrastructure, residential, and commercial projects.
+                            Skilled in civil design principles, project lifecycle management,
+                            and innovative engineering solutions. Proven track record of improving
+                            operational efficiency, sustainability, and construction quality.
+                            Passionate about mentoring students and professionals through
+                            practical, industry-oriented training.
+                        </p>
+                    </div>
+
+                    <!-- EDUCATION -->
+                    <div class="mb-24" id="education">
+                        <h2 class="text-3xl font-bold mb-12" data-aos="zoom-in">Education</h2>
+
+                        <div class="space-y-8">
+
+                            <!-- College -->
+                            <div class="relative pl-8 glow bg-slate-900 p-6 rounded-xl" data-aos="fade-left">
+                                <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">Bachelor of Engineering (Civil)</h3>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    2018 – 2022 · <span class="text-primary">CGPA: 8.34</span>
+                                </p>
+                            </div>
+
+                            <!-- 12th -->
+                            <div class="relative pl-8 glow bg-slate-900 p-6 rounded-xl" data-aos="fade-right"
+                                data-aos-delay="100">
+                                <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">Higher Secondary (12th) — Bihar Board</h3>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Naryana Mahavidyalaya Higher Secondary
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    2017 – 2018 · Percentage: <span class="text-primary">63.8%</span>
+                                </p>
+                            </div>
+
+                            <!-- 10th -->
+                            <div class="relative pl-8 glow bg-slate-900 p-6 rounded-xl" data-aos="fade-left"
+                                data-aos-delay="200">
+                                <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">Secondary (10th) — Bihar Board</h3>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    NK High School
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    2015 – 2016 · Percentage: <span class="text-primary">51.4%</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- WORK EXPERIENCE -->
+                    <div id="experience">
+                        <h2 class="text-3xl font-bold mb-12" data-aos="zoom-in">Work Experience</h2>
+
+                        <div class="space-y-10">
+
+                            <!-- Trainer -->
+                            <div class="relative pl-8 glow bg-slate-900 p-6 rounded-xl" data-aos="fade-left"
+                                data-aos-delay="100">
+                                <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">
+                                    Civil Design Trainer — CAD-X Skill Training, Bhopal
+                                </h3>
+                                <p class="text-sm text-gray-400">2022 – Present</p>
+                                <p class="mt-3 text-gray-400 leading-relaxed">
+                                    Dynamic and knowledgeable Civil Trainer with hands-on experience
+                                    training engineering students and professionals in civil engineering
+                                    fundamentals including road construction, structural design,
+                                    surveying, and construction management. Proficient in
+                                    <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">
+                                    Civil Design Trainer — CAD-X Skill Training, Bhopal
+                                </h3>
+                                <p class="text-sm text-gray-400">2022 – Present</p>
+                                <p class="mt-3 text-gray-400 leading-relaxed">
+                                    Dynamic and knowledgeable Civil Trainer with hands-on experience
+                                    training engineering students and professionals in civil engineering
+                                    fundamentals including road construction, structural design,
+                                    surveying, and construction management. Proficient in
+                                    AutoCAD, Staad Pro, Revit, MS Project, and field tools such as
+                                    Total Station and Theodolite. Experienced in curriculum design,
+                                    technical workshops, and professional mentoring.
+                                </p>
+                            </div>
+
+                            <!-- Site Engineer -->
+                            <div class="relative pl-8 glow bg-slate-900 p-6 rounded-xl" data-aos="fade-right"
+                                data-aos-delay="200">
+                                <span class="timeline-line"></span>
+                                <h3 class="text-lg font-semibold">
+                                    Civil Site Engineer — R.S. Constructions
+                                </h3>
+                                <p class="text-sm text-gray-400">2021 – 2022</p>
+                                <p class="mt-3 text-gray-400 leading-relaxed">
+                                    Detail-oriented Civil Site Engineer with experience in managing
+                                    construction sites, supervising on-site execution, ensuring
+                                    quality control, and coordinating with contractors and clients.
+                                    Skilled in interpreting structural drawings, managing site labor,
+                                    ensuring material quality, and maintaining safety standards
+                                    as per IS codes. Experienced in BOQ preparation and
+                                    daily progress reporting.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= SKILLS ================= -->
+            <section id="skills" class="py-24 bg-slate-900/50">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-12" data-aos="zoom-in">Technical Skills</h2>
+
+                    <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-6">
+
+                        <!-- CAD / Design -->
+                        <div class="skill-card" data-aos="fade-up">AutoCAD (2D & 3D)</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="100">Revit Architecture</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">Staad Pro</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="300">Google SketchUp</div>
+
+                        <!-- Visualization -->
+                        <div class="skill-card" data-aos="fade-left">Lumion</div>
+                        <div class="skill-card" data-aos="fade-right" data-aos-delay="100">V-Ray</div>
+                        <div class="skill-card" data-aos="fade-left" data-aos-delay="200">3ds Max</div>
+                        <div class="skill-card" data-aos="fade-right" data-aos-delay="300">Photoshop</div>
+
+                        <!-- Engineering -->
+                        <div class="skill-card" data-aos="fade-up">Structural Design</div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">Construction Management</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">BOQ Preparation</div>
+                        <div class="skill-card" data-aos="fade-right" data-aos-delay="300">Site Engineering</div>
+
+                        <!-- Survey Tools -->
+                        <div class="skill-card" data-aos="fade-up">Total Station</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="100">Theodolite</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">MS Project</div>
+                        <div class="skill-card" data-aos="fade-up" data-aos-delay="300">Civil Design Training</div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PROJECTS ================= -->
+            <section id="projects" class="py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="text-3xl font-bold mb-12" data-aos="zoom-in">Projects</h2>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+
+                        <!-- Residential -->
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/pro1.png" alt="Residential Project">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Residential Projects</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Planning, drafting, and execution of residential buildings with structural
+                                    detailing.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Commercial -->
+                        <div class="project-card" data-aos="fade-right" data-aos-delay="200">
+                            <img src="images/pro2.jpg" alt="kid room interior">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Kids Room Interior Design</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Creative and child-friendly interior design focused on safety, comfort, playful
+                                    themes,
+                                    smart storage solutions, and efficient space utilization.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Infrastructure -->
+                        <div class="project-card" data-aos="fade-left" data-aos-delay="300">
+                            <img src="images/pro3.jpg" alt="Temple Design Project">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Temple Design Project</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Architectural and interior planning of a temple space with traditional
+                                    aesthetics, spiritual lighting, material detailing, and structural
+                                    harmony.
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <!-- Residential 2 -->
+                        <div class="project-card" data-aos="fade-left">
+                            <img src="images/pro4.jpeg" alt="Modern House Exterior">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Modern House Exterior – Night View</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Premium modern house exterior with white façade, wood and stone textures,
+                                    greenery, and warm architectural night lighting.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Commercial 2 -->
+                        <div class="project-card" data-aos="fade-right" data-aos-delay="200">
+                            <img src="images/pro5.jpeg" alt="Farmhouse Exterior Design">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Farmhouse Exterior Design</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Single-storey farmhouse design with sloped tiled roofs, open sit-outs, glass
+                                    openings, and lush landscaping, created and rendered in SketchUp.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Infrastructure 2 -->
+                        <div class="project-card" data-aos="fade-left" data-aos-delay="100">
+                            <img src="images/class render bedroom (21).png" alt="class render bedroom">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Bedroom & Home Theatre</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Modern bedroom home theatre with marble TV unit, ambient lighting, wooden accents,
+                                    and premium interiors.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Residential 3 -->
+                        <div class="project-card" data-aos="fade-left">
+                            <img src="images/pro7.jpg" alt="AutoCAD House Plan">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">AutoCAD House Plan</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    60′ × 45′ AutoCAD 2D house plan with proper layout, circulation, furniture, and
+                                    construction-ready detailing.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Commercial 3 -->
+                        <div class="project-card" data-aos="fade-right" data-aos-delay="200">
+                            <img src="images/pro6.png" alt="Modular Modern Kitchen Design">
+                            <div class="p-5">
+                                <h4 class="font-semibold text-lg">Modular Modern Kitchen Design</h4>
+                                <p class="text-sm text-gray-400 mt-1">
+                                    Modern modular kitchen with glossy cabinets, marble backsplash, LED lighting, and
+                                    functional layout.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="mt-10 text-center text-gray-400" data-aos="zoom-in" data-aos-delay="200">
+                        <strong class="text-primary">50+ Projects</strong> completed across residential, commercial,
+                        and infrastructure domains.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ================= CONTACT ================= -->
+            <section id="contact" class="py-24 bg-slate-900/50">
+                <div class="max-w-5xl mx-auto px-6 text-center">
+
+                    <h2 class="text-4xl font-bold mb-6" data-aos="flip-up" data-aos-delay="200">
+                        Let’s <span class="text-primary">Connect</span>
+                    </h2>
+
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="300">
+                        Have a project, site work, or training requirement in mind?
+                        Feel free to reach out for collaboration or consultation.
+                    </p>
+
+                    <!-- Contact Info -->
+                    <div class="mb-12 space-y-2 text-gray-300" data-aos="fade-up" data-aos-delay="400">
+                        <p>📞 <a href="tel:+919304964754" class="text-primary hover:underline">+91 9304964754</a></p>
+                        <p>📧 <a href="mailto:sp414549@gmail.com"
+                                class="text-primary hover:underline">sp414549@gmail.com</a></p>
+                        <p class="text-gray-400">📍 Ashoka Garden, Bhopal</p>
+                    </div>
+
+                    <!-- CONTACT FORM -->
+                    <form id="contact-form" class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto" data-aos="fade-up"
+                        data-aos-delay="500">
+
+                        <!-- Name -->
+                        <input type="text" name="from_name" placeholder="Your Name" required class="w-full px-5 py-3 rounded-xl bg-slate-900 border border-white/10
+                       text-gray-200 placeholder-gray-500
+                       focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30
+                       transition" />
+
+                        <!-- Email -->
+                        <input type="email" name="from_email" placeholder="Your Email" required class="w-full px-5 py-3 rounded-xl bg-slate-900 border border-white/10
+                       text-gray-200 placeholder-gray-500
+                       focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30
+                       transition" />
+
+                        <!-- Message -->
+                        <textarea name="message" rows="5" placeholder="Your Message" required class="md:col-span-2 w-full px-5 py-3 rounded-xl bg-slate-900 border border-white/10
+                       text-gray-200 placeholder-gray-500
+                       focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30
+                       transition"></textarea>
+
+                        <!-- Status -->
+                        <p id="form-status" class="md:col-span-2 text-sm text-gray-400"></p>
+
+                        <!-- Submit -->
+                        <button type="submit" class="md:col-span-2 px-8 py-4 rounded-xl font-semibold text-white
+                       bg-gradient-to-r from-primary to-accent
+                       glow hover:scale-105 transition">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+            </section>
+
+
+            <!-- ================= FOOTER ================= -->
+            <footer class="py-6 text-center text-gray-500 border-t border-white/10">
+                © 2025 Shashi Prakash — Civil Engineer | All Rights Reserved.
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <!-- nav toggle -->
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+    <!-- counter or // rewrite animations -->
+    <script>
+        /* Counters */
+        document.querySelectorAll('.counter').forEach(counter => {
+            let target = +counter.dataset.target;
+            let count = 0;
+            const update = () => {
+                if (count < target) {
+                    count++;
+                    counter.innerText = count + "+";
+                    setTimeout(update, 130);
+                }
+            };
+            update();
+        });
+
+        /* Name Rewrite Animation */
+        const titles = [
+            ["Shashi", "Prakash"],
+            ["Civil", "Engineer"],
+            ["Design", "Trainer"]
+        ];
+        let i = 0;
+        setInterval(() => {
+            document.getElementById("word1").innerText = titles[i][0];
+            document.getElementById("word2").innerText = titles[i][1];
+            i = (i + 1) % titles.length;
+        }, 2000);
+    </script>
+
+    <!-- cursor animation -->
+    <script>
+        // Create the trailing cursor element
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        let mouseX = 0, mouseY = 0;
+        let posX = 0, posY = 0;
+        const speed = 0.15; // trailing speed
+
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Animate cursor
+        function animate() {
+            posX += (mouseX - posX) * speed;
+            posY += (mouseY - posY) * speed;
+
+            cursor.style.transform = `translate(${posX}px, ${posY}px) translate(-50%, -50%)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Add hover effect on interactive elements
+        const hoverElements = document.querySelectorAll('a, button, .glow');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+    </script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <!-- EmailJS contact form  -->
+    <script>
+        // Initialize EmailJS
+        (function () {
+            emailjs.init("aoKCNjDLmh5GHvaip");
+        })();
+
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            status.textContent = "Sending message...";
+            status.className = "md:col-span-2 text-sm text-gray-400";
+
+            emailjs.sendForm(
+                "service_or5t10v",      // Service ID
+                "template_mzmloqp",     // Template ID
+                this
+            )
+                .then(() => {
+                    status.textContent = "✅ Message sent successfully! I’ll get back to you soon.";
+                    status.className = "md:col-span-2 text-sm text-green-400";
+                    form.reset();
+                })
+                .catch((error) => {
+                    console.error("EmailJS Error:", error);
+                    status.textContent = "❌ Failed to send message. Please try again later.";
+                    status.className = "md:col-span-2 text-sm text-red-400";
+                });
+        });
+    </script>
+
+    <!--   Aos Animation -->
+    <!-- Initialize AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1100, // Animation speed
+            once: false,    // Re-animate on scroll
+            offset: 80,     // Trigger offset
+        });
+    </script>
+
+</body>
+
+</html>
